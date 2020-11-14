@@ -25,7 +25,7 @@ const {
     images,
     resep,
     rugapoi,
-    rugaapi
+    pakforlay
 } = require('./lib')
 
 const { 
@@ -272,7 +272,7 @@ module.exports = HandleMsg = async (pakforlay, message) => {
         case 'nulis':
             if (args.length == 0) return pakforlay.reply(from, `Membuat bot menulis teks yang dikirim menjadi gambar\nPemakaian: ${prefix}nulis [teks]\n\ncontoh: ${prefix}nulis i love you 3000`, id)
             const nulisq = body.slice(7)
-            const nulisp = await rugaapi.tulis(nulisq)
+            const nulisp = await pakforlay.tulis(nulisq)
             await pakforlay.sendImage(from, `${nulisp}`, '', 'Nih...', id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
@@ -413,14 +413,14 @@ module.exports = HandleMsg = async (pakforlay, message) => {
         case 'jsolat':
             if (args.length == 0) return pakforlay.reply(from, `Untuk melihat jadwal solat dari setiap daerah yang ada\nketik: ${prefix}jsolat [daerah]\n\nuntuk list daerah yang ada\nketik: ${prefix}daerah`, id)
             const solatx = body.slice(8)
-            const solatj = await rugaapi.jadwaldaerah(solatx)
+            const solatj = await pakforlay.jadwaldaerah(solatx)
             await pakforlay.reply(from, solatj, id)
             .catch(() => {
                 pakforlay.reply(from, 'Sudah input daerah yang ada dilist?', id)
             })
             break
         case 'daerah':
-            const daerahq = await rugaapi.daerah()
+            const daerahq = await pakforlay.daerah()
             await pakforlay.reply(from, daerahq, id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
@@ -453,7 +453,7 @@ module.exports = HandleMsg = async (pakforlay, message) => {
 		case 'tik':
 		case 'tiktok':
 			if (args.length == 0) return pakforlay.reply(from, `Untul mendownload video tiktok.\nKetik: ${prefix}tiktok [link_tik]`, id)
-			const tiktok = await rugaapi.tiktok(args[0])
+			const tiktok = await pakforlay.tiktok(args[0])
 			await pakforlay.sendFileFromUrl(from, tiktok, '', `Sukses mengunduh Video Tiktok Tanpa Watermark, Download by PakForlay Bot Whatsapp.`, id)
 			.catch(() => {
 				pakforlay.reply(from, 'Ada yang error!', id)
@@ -461,7 +461,7 @@ module.exports = HandleMsg = async (pakforlay, message) => {
 			break
         case 'instagram':
             if (args.length == 0) return pakforlay.reply(from, `Untuk mendownload gambar atau video dari instagram\nketik: ${prefix}instagram [link_ig]`, id)
-            const instag = await rugaapi.insta(args[0])
+            const instag = await pakforlay.insta(args[0])
             await pakforlay.sendFileFromUrl(from, instag, '', '', id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
@@ -469,7 +469,7 @@ module.exports = HandleMsg = async (pakforlay, message) => {
             break
         case 'ytmp3':
             if (args.length == 0) return pakforlay.reply(from, `Untuk mendownload lagu dari youtube\nketik: ${prefix}ytmp3 [link_yt]`, id)
-            const mp3 = await rugaapi.ytmp3(args[0])
+            const mp3 = await pakforlay.ytmp3(args[0])
             await pakforlay.sendFileFromUrl(from, mp3, '', '', id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
@@ -477,7 +477,7 @@ module.exports = HandleMsg = async (pakforlay, message) => {
             break
         case 'ytmp4':
             if (args.length == 0) return pakforlay.reply(from, `Untuk mendownload video dari youtube\nketik: ${prefix}ytmp3 [link_yt]`)
-            const mp4 = await rugaapi.ytmp4(args[0])
+            const mp4 = await pakforlay.ytmp4(args[0])
             await pakforlay.sendFileFromUrl(from, mp4, '', '', id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
@@ -522,7 +522,7 @@ module.exports = HandleMsg = async (pakforlay, message) => {
             })
             break
         case 'quote':
-            const quotex = await rugaapi.quote()
+            const quotex = await pakforlay.quote()
             await pakforlay.reply(from, quotex, id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
@@ -618,8 +618,8 @@ module.exports = HandleMsg = async (pakforlay, message) => {
             break
         case 'stalkig':
             if (args.length == 0) return pakforlay.reply(from, `Untuk men-stalk akun instagram seseorang\nketik ${prefix}stalkig [username]\ncontoh: ${prefix}stalkig ini.arga`, id)
-            const igstalk = await rugaapi.stalkig(args[0])
-            const igstalkpict = await rugaapi.stalkigpict(args[0])
+            const igstalk = await pakforlay.stalkig(args[0])
+            const igstalkpict = await pakforlay.stalkigpict(args[0])
             await pakforlay.sendFileFromUrl(from, igstalkpict, '', igstalk, id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
@@ -628,7 +628,7 @@ module.exports = HandleMsg = async (pakforlay, message) => {
         case 'wiki':
             if (args.length == 0) return pakforlay.reply(from, `Untuk mencari suatu kata dari wikipedia\nketik: ${prefix}wiki [kata]`, id)
             const wikip = body.slice(6)
-            const wikis = await rugaapi.wiki(wikip)
+            const wikis = await pakforlay.wiki(wikip)
             await pakforlay.reply(from, wikis, id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
@@ -637,7 +637,7 @@ module.exports = HandleMsg = async (pakforlay, message) => {
         case 'cuaca':
             if (args.length == 0) return pakforlay.reply(from, `Untuk melihat cuaca pada suatu daerah\nketik: ${prefix}cuaca [daerah]`, id)
             const cuacaq = body.slice(7)
-            const cuacap = await rugaapi.cuaca(cuacaq)
+            const cuacap = await pakforlay.cuaca(cuacaq)
             await pakforlay.reply(from, cuacap, id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
@@ -646,7 +646,7 @@ module.exports = HandleMsg = async (pakforlay, message) => {
         case 'chord':
             if (args.length == 0) return pakforlay.reply(from, `Untuk mencari lirik dan chord dari sebuah lagu\bketik: ${prefix}chord [judul_lagu]`, id)
             const chordq = body.slice(7)
-            const chordp = await rugaapi.chord(chordq)
+            const chordp = await pakforlay.chord(chordq)
             await pakforlay.reply(from, chordp, id)
             .catch(() => {
                 pakforlay.reply(from, 'Ada yang eror!', id)
