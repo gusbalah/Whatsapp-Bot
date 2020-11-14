@@ -14,6 +14,9 @@ THANKS BANG ARUGAZ ATAS API NYA, DALAM WAKTU SINGKAT INSHAALLAH API SAYA SENDIRI
 <p align="center"><a href="https://yaelahdo.herokuapp.com/" target="_blank">API PakForlay</a>.</p>
 </div>
 
+## 14/11/2020
+## UPDATE TIKTOK DOWNLOADER TANPA WATERMARK
+
 ## Getting Started
 
 This project require NodeJS v12.
