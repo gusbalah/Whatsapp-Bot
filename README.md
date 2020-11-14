@@ -9,7 +9,7 @@
  
 </details>
 
-THANKS BANG ARUGAZ ATAS API NYA, DALAM WAKTU SINGKAT INSHAALLAH API SAYA SENDIRI AKAN SAYA UPDATE TERS
+THANKS BANG ARUGAZ ATAS API NYA, DALAM WAKTU SINGKAT INSHAALLAH API SAYA SENDIRI AKAN SAYA UPDATE TERUS
 <p align="center"><a href="https://arugaz.herokuapp.com/" target="_blank">API ARUGAZ</a>.</p>
 <p align="center"><a href="https://yaelahdo.herokuapp.com/" target="_blank">API PakForlay</a>.</p>
 </div>
